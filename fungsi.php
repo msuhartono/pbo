@@ -48,6 +48,13 @@ class Koneksi {
 		$query = "DELETE FROM siswa WHERE id = $id";
 		mysqli_query($this->conn, $query);
 	}
+	
+	public function cariData($keyword)
+	{
+		$query = "SELECT * FROM siswa WHERE nama LIKE '%$keyword%' OR kelas LIKE '%$keyword%' OR jurusan LIKE '%$keyword%'";
+		$result = mysqli_query($this->conn, $query);
+		return $result;
+	}
 
 }
 
