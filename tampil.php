@@ -4,6 +4,11 @@ require 'fungsi.php';
 $Koneksi = new Koneksi();
 $data = $Koneksi->tampilData("SELECT * FROM siswa");
 
+if (isset($_POST['cari'])) {
+    $keyword = $_POST['keyword'];
+    $data = $Koneksi->cariData($keyword);
+}
+
 ?>
 
 
@@ -20,6 +25,10 @@ $data = $Koneksi->tampilData("SELECT * FROM siswa");
   <h2>Tambah Data</h2>
 
     <a href="tambah.php">Tambah</a>
+    <form method="post">
+        <input type="text" name="keyword">
+        <button type="submit" name="cari">Cari</button>
+    </form>
 
     <table>
         <tr>
